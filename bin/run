@@ -3,7 +3,7 @@
 
 require 'webrick'
 
-DOCUMENT_ROOT = './docs'
+DOCUMENT_ROOT = File.join(File.dirname(__FILE__), '/../', 'docs')
 
 WEBrick::HTTPResponse.class_eval do
   def create_error_page

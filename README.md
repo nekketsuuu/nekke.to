@@ -9,5 +9,5 @@ erb -r json ./redirect.rb.erb > ./docs/-/redirect.rb
 Prerequisite: webrick
 
 ```sh
-./run.rb
+bin/run
 ```
