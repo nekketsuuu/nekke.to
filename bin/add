@@ -41,6 +41,7 @@ if __FILE__ == $PROGRAM_NAME
 
   validate(path:, target_url:)
 
+  warn File.join(ROOT_DIRECTORY, 'redirects.json')
   warn File.read(File.join(ROOT_DIRECTORY, 'redirects.json'))
 
   redirects = JSON.parse(File.read(File.join(ROOT_DIRECTORY, 'redirects.json')))
