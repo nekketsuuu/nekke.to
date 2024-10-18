@@ -4,6 +4,8 @@
 require 'json'
 require 'uri'
 
+ROOT_DIRECTORY = File.join(File.dirname(__FILE__), '../')
+
 def validate(path:, target_url:)
   raise 'Given short name is empty' if path.empty?
   raise 'Given short name contains unsafe character(s) as a URL' if path =~ URI::UNSAFE
@@ -39,7 +41,7 @@ if __FILE__ == $PROGRAM_NAME
 
   validate(path:, target_url:)
 
-  redirects = JSON.parse(File.read('./redirects.json'))
+  redirects = JSON.parse(File.read(File.join(ROOT_DIRECTORY, 'redirects.json')))
   if redirects.key?(path)
     raise "The path #{path} has already existed. Please edit the JSON file directly"
   end

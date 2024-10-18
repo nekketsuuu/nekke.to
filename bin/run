@@ -3,7 +3,7 @@
 
 require 'webrick'
 
-DOCUMENT_ROOT = File.join(File.dirname(__FILE__), '/../', 'docs')
+DOCUMENT_ROOT = File.join(File.dirname(__FILE__), '../', 'docs')
 
 if __FILE__ == $PROGRAM_NAME
   WEBrick::HTTPResponse.class_eval do
