@@ -26,10 +26,10 @@ jobs:
         id: git-diff
         run: |
           git add --intent-to-add ./docs
-          git diff --exit-code
+          ! git diff --exit-code
         continue-on-error: true
       - name: Commit changes and push
-        if: steps.git-diff.outcome == 'failure'
+        if: steps.git-diff.outcome == 'success'
         run: |
           # https://api.github.com/users/github-actions%5Bbot%5D
           git config --global user.name 'github-actions[bot]'
