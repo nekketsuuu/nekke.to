@@ -28,7 +28,7 @@ jobs:
       - name: Commit changes and push
         if: steps.git-diff.outcome == 'failure'
         run: |
-          git config --global user.name github-actions
+          git config --global user.name 'github-actions[bot]'
           git config --global user.email 'nekketsuuu@users.noreply.github.com'
           git add ./docs
           git commit -m '[Bot] Build docs'
