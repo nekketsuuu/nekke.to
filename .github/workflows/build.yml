@@ -20,7 +20,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
       - name: Build
         run: |
-          bin/build
+          ./bin/build
       - name: Check if docs files are updated
         id: git-diff
         run: |
