@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'json'
+require 'uri'
+
+def validate(path:, target_url:)
+  raise 'Given short name is empty' if path.empty?
+  raise 'Given short name contains unsafe character(s) as a URL' if path =~ URI::UNSAFE
+
+  normalized_path =
+    begin
+      URI.parse("https://example.com#{path}").normalize.path.gsub(%r{/+}, '/')
+    rescue URI::Error => e
+      raise "Given short name is invalid as a URL path: #{e.message}"
+    end
+  unless path == normalized_path
+    raise "Please normalize given short name to #{normalized_path}"
+  end
+
+  raise 'Given URL is empty' if target_url.empty?
+
+  begin
+    unless URI.parse(target_url).is_a?(URI::HTTP)
+      raise 'Given URL is not a HTTP(S) URL'
+    end
+  rescue URI::Error => e
+    raise "Given URL might be illegal: #{e.message}"
+  end
+end
+
+if __FILE__ == $PROGRAM_NAME
+  unless ARGV.length == 2
+    warn "Usage: #{$PROGRAM_NAME} [short name] [URL]"
+    exit 1
+  end
+  path = "/#{ARGV.fetch(0).strip.delete_prefix('/').delete_suffix('/')}"
+  target_url = ARGV.fetch(1).strip
+
+  validate(path:, target_url:)
+
+  redirects = JSON.parse(File.read('./redirects.json'))
+  if redirects.key?(path)
+    raise "The path #{path} has already existed. Please edit the JSON file directly"
+  end
+
+  redirects[path] = target_url
+
+  puts JSON.pretty_generate(redirects)
+end

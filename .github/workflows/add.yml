@@ -1,0 +1,40 @@
+on:
+  workflow_dispatch:
+    inputs:
+      short_name:
+        description: 'Abbreviated name of the URL'
+        required: true
+        type: string
+      url:
+        description: 'Destination URL'
+        required: true
+        type: string
+
+jobs:
+  add_redirect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Validate inputs
+        if: ${{ contains(inputs.short_name, "'") || contains(inputs.url, "'") }}
+        run: |
+          echo Invalid input string(s)
+          exit 1
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+      - name: Update redirects.json
+        run: |
+          ./bin/add '${{ inputs.short_name }}' '${{ inputs.url }}' > ./redirects.json
+      - name: Validate if redirects.json is updated
+        run: |
+          git add --intent-to-add ./redirects.json
+          ! git diff --name-only --exit-code
+      - name: Commit changes and push
+        run: |
+          # https://api.github.com/users/github-actions%5Bbot%5D
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ./redirects.json
+          # TODO: Normalize inputs.short_name (e.g., stripping whitespaces)
+          git commit -m '[Bot] Add new path: /${{ inputs.short_name }}'
+          git push
