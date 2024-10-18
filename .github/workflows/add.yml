@@ -18,7 +18,7 @@ jobs:
       contents: write
     steps:
       - name: Validate inputs
-        if: ${{ contains(inputs.short_name, "'") || contains(inputs.url, "'") }}
+        if: ${{ contains(inputs.short_name, '''') || contains(inputs.url, '''') }} # If inputs contain any single quotes...
         run: |
           echo Invalid input string(s)
           exit 1
