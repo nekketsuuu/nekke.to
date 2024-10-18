@@ -5,6 +5,7 @@ require 'json'
 require 'uri'
 
 ROOT_DIRECTORY = File.join(File.dirname(__FILE__), '../')
+REDIRECTS_JSON = File.join(ROOT_DIRECTORY, 'redirects.json')
 
 def validate(path:, target_url:)
   raise 'Given short name is empty' if path.empty?
@@ -41,16 +42,16 @@ if __FILE__ == $PROGRAM_NAME
 
   validate(path:, target_url:)
 
-  warn `ls #{ROOT_DIRECTORY}`
-  warn File.join(ROOT_DIRECTORY, 'redirects.json')
-  warn File.read(File.join(ROOT_DIRECTORY, 'redirects.json'))
-
-  redirects = JSON.parse(File.read(File.join(ROOT_DIRECTORY, 'redirects.json')))
+  redirects = JSON.parse(File.read(REDIRECTS_JSON))
   if redirects.key?(path)
     raise "The path #{path} has already existed. Please edit the JSON file directly"
   end
 
   redirects[path] = target_url
 
-  puts JSON.pretty_generate(redirects)
+  output = JSON.pretty_generate(redirects)
+  File.open(REDIRECTS_JSON, 'w') do |f|
+    f.write output
+  end
+  puts output
 end

@@ -26,7 +26,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
       - name: Update redirects.json
         run: |
-          ./bin/add '${{ inputs.short_name }}' '${{ inputs.url }}' > ./redirects.json
+          ./bin/add '${{ inputs.short_name }}' '${{ inputs.url }}'
       - name: Validate if redirects.json is updated
         run: |
           git add --intent-to-add ./redirects.json
