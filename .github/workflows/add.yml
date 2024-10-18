@@ -29,8 +29,8 @@ jobs:
           ./bin/add '${{ inputs.short_name }}' '${{ inputs.url }}'
       - name: Validate if redirects.json is updated
         run: |
-          git add --intent-to-add ./redirects.json
-          ! git diff --name-only --exit-code
+          git add --intent-to-add ./redirects.json > /dev/null
+          ! git diff --exit-code
       - name: Commit changes and push
         run: |
           # https://api.github.com/users/github-actions%5Bbot%5D
