@@ -41,6 +41,8 @@ if __FILE__ == $PROGRAM_NAME
 
   validate(path:, target_url:)
 
+  puts File.read(File.join(ROOT_DIRECTORY, 'redirects.json'))
+
   redirects = JSON.parse(File.read(File.join(ROOT_DIRECTORY, 'redirects.json')))
   if redirects.key?(path)
     raise "The path #{path} has already existed. Please edit the JSON file directly"
