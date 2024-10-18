@@ -1,7 +1,7 @@
 # nek.link
 
 ```sh
-erb -r json ./redirect.rb.erb > ./docs/-/redirect.rb
+bin/build
 ```
 
 ## Local Development
