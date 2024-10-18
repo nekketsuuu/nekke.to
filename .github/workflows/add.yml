@@ -2,7 +2,7 @@ on:
   workflow_dispatch:
     inputs:
       short_name:
-        description: 'Abbreviated name of the URL'
+        description: 'Short name of the URL'
         required: true
         type: string
       url:
