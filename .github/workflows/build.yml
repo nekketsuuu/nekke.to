@@ -23,7 +23,7 @@ jobs:
         id: git-diff
         run: |
           git add --intent-to-add ./docs
-          git diff --name-only --exit-code
+          git diff --exit-code
         continue-on-error: true
       - name: Commit changes and push
         if: steps.git-diff.outcome == 'failure'
