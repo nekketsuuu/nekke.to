@@ -1,4 +1,5 @@
 {
   "/": "https://github.com/nekketsuuu",
-  "/test": "http://example.com"
+  "/test": "http://example.com",
+  "/test2": "http://example.com"
 }
