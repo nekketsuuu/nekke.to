@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 1
     permissions:
+      actions: write
       contents: write
     steps:
       - name: Validate inputs
