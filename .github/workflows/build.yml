@@ -4,7 +4,7 @@ on:
       - main
     paths:
       - redirects.json
-  workflow_dispatch: # For manual retry
+  workflow_dispatch: # For manual retries and invocations from other workflows
 
 concurrency:
   group: ${{ github.workflow }}

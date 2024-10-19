@@ -31,7 +31,7 @@ jobs:
         run: |
           git add --intent-to-add ./redirects.json > /dev/null
           ! git diff --exit-code
-      - name: Commit changes and push
+      - name: Commit changes, push, and invoke the build
         run: |
           # https://api.github.com/users/github-actions%5Bbot%5D
           git config --global user.name 'github-actions[bot]'
@@ -40,3 +40,4 @@ jobs:
           # TODO: Normalize inputs.short_name (e.g., stripping whitespaces)
           git commit -m '[Bot] Add new path: /${{ inputs.short_name }}'
           git push
+          gh workflow run build.yml
