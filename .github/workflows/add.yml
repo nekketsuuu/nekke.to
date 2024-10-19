@@ -32,6 +32,8 @@ jobs:
           git add --intent-to-add ./redirects.json > /dev/null
           ! git diff --exit-code
       - name: Commit changes, push, and invoke the build
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           # https://api.github.com/users/github-actions%5Bbot%5D
           git config --global user.name 'github-actions[bot]'
