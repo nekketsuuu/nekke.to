@@ -1,4 +1,4 @@
-# nek.link
+# nekke.to
 
 ```sh
 bin/build
