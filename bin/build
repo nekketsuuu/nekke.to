@@ -1,3 +1,4 @@
 #!/bin/sh
 
-erb -r json ./redirect.rb.erb > ./docs/-/redirect.rb
+erb -T - ./redirect.rb.erb > ./docs/-/redirect.rb
+erb -T - ./404.html.erb > ./docs/404.html

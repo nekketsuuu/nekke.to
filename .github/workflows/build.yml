@@ -3,7 +3,7 @@ on:
     branches:
       - main
     paths:
-      - redirect.rb.erb
+      - '**.erb'
       - redirects.json
   workflow_dispatch: # For manual retries and invocations from other workflows
 
