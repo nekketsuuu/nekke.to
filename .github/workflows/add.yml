@@ -27,6 +27,8 @@ jobs:
           echo Invalid input string(s)
           exit 1
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: ruby/setup-ruby@v1
       - name: Update redirects.json
         run: |

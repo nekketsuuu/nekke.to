@@ -22,7 +22,6 @@ jobs:
       - uses: ruby/setup-ruby@v1
       - name: Build
         run: |
-          git pull # The eariler run of this workflow may update the branch after an invokation of the current run.
           ./bin/build
       - name: Check if docs files are updated
         id: git-diff
