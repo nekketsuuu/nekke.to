@@ -5,6 +5,7 @@ on:
     paths:
       - '**.erb'
       - redirects.json
+      - /bin/build
   workflow_dispatch: # For manual retries and invocations from other workflows
 
 concurrency:
