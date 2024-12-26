@@ -48,6 +48,7 @@ if __FILE__ == $PROGRAM_NAME
   end
 
   redirects[path] = target_url
+  redirects = redirects.sort.to_h
 
   output = JSON.pretty_generate(redirects)
   File.open(REDIRECTS_JSON, 'w') do |f|
