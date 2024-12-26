@@ -12,5 +12,6 @@
   "/yure": "http://www.kmoni.bosai.go.jp/",
   "/dockerfile": "https://docs.docker.com/reference/dockerfile/",
   "/cops": "https://docs.rubocop.org/rubocop/cops.html",
-  "/entra": "https://entra.microsoft.com/"
+  "/entra": "https://entra.microsoft.com/",
+  "/compose": "https://docs.docker.com/reference/compose-file/"
 }
