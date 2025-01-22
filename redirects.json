@@ -1,5 +1,6 @@
 {
   "": "https://github.com/nekketsuuu/nekke.to",
+  "/actions": "https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions",
   "/actions/event": "https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows",
   "/blog": "https://nekketsuuu.github.io/",
   "/blog/repo": "https://github.com/nekketsuuu/nekketsuuu.github.io",
