@@ -1,5 +1,6 @@
 {
   "": "https://github.com/nekketsuuu/nekke.to",
+  "/actions/event": "https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows",
   "/blog": "https://nekketsuuu.github.io/",
   "/blog/repo": "https://github.com/nekketsuuu/nekketsuuu.github.io",
   "/compose": "https://docs.docker.com/reference/compose-file/",
