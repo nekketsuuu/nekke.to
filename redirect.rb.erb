@@ -3,7 +3,7 @@ require 'js'
 
 DEFAULT_TARGET = 'https://github.com/nekketsuuu/nekke.to/actions/workflows/add.yml'
 
-current = JS.global[:window][:location][:pathname].to_poro.chomp('/')
+current = JS.global[:window][:location][:pathname].to_s.chomp('/')
 mapping = <%= JSON.parse(File.read('./redirects.json')).to_h %>
 target = mapping[current] || DEFAULT_TARGET
 
